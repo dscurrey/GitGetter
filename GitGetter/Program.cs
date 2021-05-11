@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using GitGetter.Services;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
@@ -27,10 +29,14 @@ namespace GitGetter
                     (context, services) =>
                     {
                         // Config Services
+                        services.AddTransient<IGitRepoService, GitRepoService>();
                     }
                 )
                 .UseSerilog()
                 .Build();
+
+            var serv = ActivatorUtilities.CreateInstance<GitRepoService>(host.Services);
+            serv.Run();
         }
 
         static void BuildConfig(IConfigurationBuilder builder)
