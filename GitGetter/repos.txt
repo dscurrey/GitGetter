@@ -1,0 +1,3 @@
+﻿https://github.com/dscurrey/GitGetter.git
+https://github.com/dscurrey/dscurrey.github.io.git
+bean
