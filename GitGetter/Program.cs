@@ -19,6 +19,7 @@ namespace GitGetter
                 .ReadFrom.Configuration(builder.Build())
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
+                .WriteTo.File("GitGetter.log")
                 .CreateLogger();
 
             Log.Logger.Information("Starting GitGetter...");
